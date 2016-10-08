@@ -1,58 +1,115 @@
-title: "STEP TEMPLATE"
-summary: A short summary of the step. Don't make it too long ;)
+title: LIFX Notifier
+summary: |-
+    Sends signals to your LIFX bulb during builds.
 description: |-
-  This is a Step template.
-  Contains everything what's required for a valid Stepman managed step.
+    Add this step to your workflow when color change is required.
 
-  A Step's description (and generally any `description` property)
-  can be a [Markdown](https://en.wikipedia.org/wiki/Markdown) formatted text.
-
-  To create your own Step:
-
-  1. Create a new repository on GitHub
-  2. Copy the files from this folder into your repository
-  3. That's all, you can use it on your own machine
-  4. Once you're happy with it you can share it with others.
-website: https://github.com/...
-source_code_url: https://github.com/...
-support_url: https://github.com/.../issues
+    This step can be used at the start(notify build start) and at the end(notify success/failure) of your workflow.
+    If there's no need to notify about workflow start than adding step to the end of the workflow will be enough.
+    If all colors fields will be empty, default colors will be used:
+    "build start" - yellow, "build success" - green, "build failure" - red.
+website: https://github.com/vgaidarji/steps-lifx-notifier
+source_code_url: https://github.com/vgaidarji/steps-lifx-notifier
+support_url: https://github.com/vgaidarji/steps-lifx-notifier/issues
 host_os_tags:
-  - osx-10.10
+    - "osx-10.8"
+    - "osx-10.10"
+    - "ubuntu"
 project_type_tags:
-  - ios
-  - android
-  - xamarin
+    - ios
+    - android
 type_tags:
-  - script
-is_requires_admin_user: true
-is_always_run: false
-is_skippable: false
-deps:
-  brew:
-  - name: git
-  - name: wget
-  apt_get:
-  - name: git
-  - name: wget
+    - utilities
+is_requires_admin_user: false
+is_always_run: true
+is_skippable: true
 run_if: ""
 inputs:
-  - example_step_input: Default Value - you can leave this empty if you want to
+  - auth_token:
     opts:
-      title: "Example Step Input"
-      summary: Summary. No more than 2-3 sentences.
+      title: "Authentication token"
       description: |
-        Description of this input.
-
-        Can be Markdown formatted text.
-      is_expand: true
+        This step uses official LIFX API,
+        which requires OAuth2 Access token (https://api.developer.lifx.com/docs/authentication).
       is_required: true
-      value_options: []
-outputs:
-  - EXAMPLE_STEP_OUTPUT:
+  - bulb_label:
     opts:
-      title: "Example Step Output"
-      summary: Summary. No more than 2-3 sentences.
+      title: "LIFX bulb label"
       description: |
-        Description of this output.
-
-        Can be Markdown formatted text.
+        This is the name of the LIFX bulb, eg. "Bedroom", "Office".
+      is_required: true
+  - workflow_start: "no"
+    opts:
+      title: "Workflow start identifier"
+      description: |
+        Identifies if this step used at the start of the workflow or not.
+      is_required: true
+      value_options:
+        - "yes"
+        - "no"
+  - color_build_started: "yellow"
+    opts:
+      title: "Build started color (LIFX default)"
+      description: |
+        This color will be used to notify about workflow start,
+        if no custom color provided.
+      value_options:
+        - "blue"
+        - "cyan"
+        - "green"
+        - "orange"
+        - "pink"
+        - "purple"
+        - "red"
+        - "yellow"
+        - "white"
+  - color_build_started_custom:
+    opts:
+      title: "Build started color (custom)"
+      description: |
+        If custom color provided, it will be used instead of LIFX default.
+        Format #RRGGBB, e.g: #ffff00 (yellow).
+  - color_build_success: "green"
+    opts:
+      title: "Build success color (LIFX default)"
+      description: |
+        This color will be used to notify about successfully completed workflow,
+        if no custom color provided.
+      value_options:
+        - "blue"
+        - "cyan"
+        - "green"
+        - "orange"
+        - "pink"
+        - "purple"
+        - "red"
+        - "yellow"
+        - "white"
+  - color_build_success_custom:
+    opts:
+      title: "Build success color (custom)"
+      description: |
+        If custom color provided, it will be used instead of LIFX default.
+        Format #RRGGBB, e.g: #00ff00 (green).
+  - color_build_failure: "red"
+    opts:
+      title: "Build failure color (LIFX default)"
+      description: |
+        This color will be used to notify about failure,
+        if no custom color provided.
+      value_options:
+        - "blue"
+        - "cyan"
+        - "green"
+        - "orange"
+        - "pink"
+        - "purple"
+        - "red"
+        - "yellow"
+        - "white"
+  - color_build_failure_custom:
+    opts:
+      title: "Build failure color (custom)"
+      description: |
+        If custom color provided, it will be used instead of LIFX default.
+        Format #RRGGBB, e.g: #ff0000 (red).
