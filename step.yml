@@ -68,7 +68,7 @@ inputs:
       title: "Build started color (custom)"
       description: |
         If custom color provided, it will be used instead of LIFX default.
-        Format #RRGGBB, e.g: #ffff00 (yellow).
+        Format RRGGBB, e.g: ffff00 (yellow).
   - color_build_success: "green"
     opts:
       title: "Build success color (LIFX default)"
@@ -90,7 +90,7 @@ inputs:
       title: "Build success color (custom)"
       description: |
         If custom color provided, it will be used instead of LIFX default.
-        Format #RRGGBB, e.g: #00ff00 (green).
+        Format RRGGBB, e.g: 00ff00 (green).
   - color_build_failure: "red"
     opts:
       title: "Build failure color (LIFX default)"
@@ -112,4 +112,4 @@ inputs:
       title: "Build failure color (custom)"
       description: |
         If custom color provided, it will be used instead of LIFX default.
-        Format #RRGGBB, e.g: #ff0000 (red).
+        Format RRGGBB, e.g: ff0000 (red).
