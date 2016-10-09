@@ -6,7 +6,7 @@ description: |-
 
     This step can be used at the start (notify build start) and at the end (notify success/failure) of your workflow.
     If there's no need to notify about workflow start than adding step to the end of the workflow will be enough.
-    
+
     If all colors fields will be empty, default colors will be used:
     "build start" - yellow, "build success" - green, "build failure" - red.
 website: https://github.com/vgaidarji/steps-lifx-notifier
@@ -20,7 +20,8 @@ project_type_tags:
     - ios
     - android
 type_tags:
-    - utilities
+    - utils
+    - notification
 is_requires_admin_user: false
 is_always_run: true
 is_skippable: true
