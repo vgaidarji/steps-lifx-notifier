@@ -37,43 +37,12 @@ inputs:
       description: |
         This is the name of the LIFX bulb, eg. "Bedroom", "Office".
       is_required: true
-  - workflow_start: "no"
-    opts:
-      title: "Workflow start identifier"
-      description: |
-        Identifies if this step used at the start of the workflow or not.
-      is_required: true
-      value_options:
-        - "yes"
-        - "no"
-  - color_build_started: "yellow"
-    opts:
-      title: "Build started color (LIFX default)"
-      description: |
-        This color will be used to notify about workflow start,
-        if no custom color provided.
-      value_options:
-        - "blue"
-        - "cyan"
-        - "green"
-        - "orange"
-        - "pink"
-        - "purple"
-        - "red"
-        - "yellow"
-        - "white"
-  - color_build_started_custom:
-    opts:
-      title: "Build started color (custom)"
-      description: |
-        If custom color provided, it will be used instead of LIFX default.
-        Format RRGGBB, e.g: ffff00 (yellow).
   - color_build_success: "green"
     opts:
       title: "Build success color (LIFX default)"
       description: |
-        This color will be used to notify about successfully completed workflow,
-        if no custom color provided.
+        It can be used after any step in the workflow to notify about current state.
+        e.g.: use "yellow" color to indicate that workflow started
       value_options:
         - "blue"
         - "cyan"
