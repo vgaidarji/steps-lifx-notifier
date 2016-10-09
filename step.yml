@@ -16,9 +16,6 @@ host_os_tags:
     - "osx-10.8"
     - "osx-10.10"
     - "ubuntu"
-project_type_tags:
-    - ios
-    - android
 type_tags:
     - utils
     - notification
