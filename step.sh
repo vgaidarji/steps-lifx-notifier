@@ -38,7 +38,20 @@ else
     body="{\"color\":\"${color}\",\"power\":\"on\"}"
 fi
 
+# check whether to employ an effect instead of just turning it a solid color
+if [[ "${effect}" != "none" ]]; then
+    endpoint="lights/label:${bulb_label}/effects/${effect}"
+    body="{\"color\":\"${color}\",\"from_color\":\"white\",\"cycles\":10}"
+    method="POST"
+else
+    endpoint="lights/label:${bulb_label}/state"
+    method="PUT"
+fi
+
 # change bulb color via API
-curl -s -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer ${auth_token}" -d ${body} "https://api.lifx.com/v1/lights/label:${bulb_label}/state" #> /dev/null
+curl -s -X $method \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer ${auth_token}" \
+    -d ${body} "https://api.lifx.com/v1/$endpoint" #> /dev/null
 return_code=$?
 exit ${return_code}

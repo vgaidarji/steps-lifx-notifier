@@ -81,3 +81,12 @@ inputs:
       description: |
         If custom color provided, it will be used instead of LIFX default.
         Format RRGGBB, e.g: ff0000 (red).
+  - effect: "none"
+    opts:
+      title: "Effect"
+      description: |
+        Instead of setting a solid color, do you want to e.g. pulse the light?
+      value_options:
+        - "none"
+        - "pulse"
+        - "breathe"
